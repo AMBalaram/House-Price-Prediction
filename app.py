@@ -6,7 +6,7 @@ import joblib
 import matplotlib.pyplot as plt
 
 # Load the dataset
-data = pd.read_csv('house_price_dataset_original_v2_cleaned.csv')
+data = pd.read_csv('/workspaces/House-Price-Prediction/Dataset1.csv')
 
 # Define target variable and features
 y = data['property_value']
@@ -14,16 +14,12 @@ x = data[['land_size_sqm',
           'house_size_sqm', 
           'no_of_rooms', 
           'no_of_bathrooms', 
-          'large_living_room', 
+          'living_room', 
           'parking_space', 
           'front_garden', 
-          'swimming_pool', 
-          'distance_to_school', 
-          'wall_fence', 
+          'swimming_pool',
           'house_age', 
-          'water_front', 
-          'distance_to_supermarket_km', 
-          'crime_rate_index', 'room_size']]
+          'Land_Rate_per_Acre']]
 
 
 from sklearn import model_selection
@@ -33,8 +29,8 @@ print(x_test.shape)
 print(y_train.shape)
 print(y_test.shape)
 # Train the model
-from sklearn.linear_model import LinearRegression
-alg1 = LinearRegression()
+from sklearn.ensemble import RandomForestRegressor
+alg1=RandomForestRegressor()
 alg1.fit(x_train, y_train)
 
 # Visualize the results
@@ -75,13 +71,8 @@ def predict():
             data.get('parking_space', '0'),
             data.get('front_garden', '0'),
             data.get('swimming_pool', '0'),
-            data.get('distance_to_school', '0'),
-            data.get('wall_fence', '0'),
             data.get('house_age', '0'),
-            data.get('water_front', '0'),
-            data.get('distance_to_supermarket_km', '0'),
-            data.get('crime_rate_index', '0'),
-            data.get('room_size', '0')
+            data.get('Land_Rate_per_Acre', '0')
         ]
         
         # Clean and convert features to numpy array
