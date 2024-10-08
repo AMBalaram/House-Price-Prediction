@@ -6,7 +6,7 @@ import joblib
 import matplotlib.pyplot as plt
 
 # Load the dataset
-data = pd.read_csv('/workspaces/House-Price-Prediction/Dataset1.csv')
+data = pd.read_csv('Dataset1.csv')
 
 # Define target variable and features
 y = data['property_value']
